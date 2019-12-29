@@ -1,7 +1,7 @@
 const GAME_SPEED = 100;
 const CANVAS_BORDER_COLOR = 'black';
 const CANVAS_BACKGROUND_COLOR = "gold";
-const SNAKE_COLOR = 'lightgreen';
+const SNAKE_COLOR = 'yellow';
 const SNAKE_BORDER_COLOR = 'darkgreen';
 const FOOD_COLOR = 'red';
 const FOOD_BORDER_COLOR = 'darkred';
@@ -86,12 +86,7 @@ function didGameEnd() {
   const hitBottomWall = snake[0].y > gameCanvas.height - 10;
   return hitLeftWall || hitRightWall || hitToptWall || hitBottomWall
 }
-/**
- * Generates a random number that is a multiple of 10 given a minumum
- * and a maximum number
- * @param { number } min - The minimum number the random number can be
- * @param { number } max - The maximum number the random number can be
- */
+
 function randomTen(min, max) {
   return Math.round((Math.random() * (max-min) + min) / 10) * 10;
 }
@@ -108,10 +103,6 @@ function createFood() {
 function drawSnake() {
   snake.forEach(drawSnakePart)
 }
-/**
- * Draws a part of the snake on the canvas
- * @param { object } snakePart - The coordinates where the part should be drawn
- */
 
 function drawSnakePart(snakePart) {
   ctx.fillStyle = SNAKE_COLOR;
@@ -120,14 +111,7 @@ function drawSnakePart(snakePart) {
   ctx.fillRect(snakePart.x, snakePart.y, 10, 10);
   ctx.strokeRect(snakePart.x, snakePart.y, 10, 10);
 }
-/**
- * Changes the vertical and horizontal velocity of the snake according to the
- * key that was pressed.
- * The direction cannot be switched to the opposite direction, to prevent the snake
- * from reversing
- * For example if the the direction is 'right' it cannot become 'left'
- * @param { object } event - The keydown event
- */
+
 function changeDirection(event) {
   const LEFT_KEY = 37;
   const RIGHT_KEY = 39;
